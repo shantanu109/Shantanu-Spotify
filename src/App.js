@@ -5,21 +5,55 @@ import { getTokenFromUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import Player from "./Player";
 import { useDataLayerValue } from "./DataLayer";
+import {
+  BrowserRouter as Router,
+  Link,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
+
 
 const spotify = new SpotifyWebApi();
+const PrivateRoute = (privateRouteProps) => {
+  const { isLoggedIn, path, component: Component } = privateRouteProps;
+
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        return isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/',
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
+
 
 function App() {
 
   //const [{ user,token }, dispatch] = useDataLayerValue();
-  const [{ token }, dispatch] = useDataLayerValue();
+  const [{ token ,playlists,isLoggedIn}, dispatch] = useDataLayerValue();
+  
 
   useEffect(() => {
     const hash = getTokenFromUrl();
-    window.location.hash = "";
+    //window.location.hash = "";
+    
 
     //const _token = hash.access_token;
     let _token = hash.access_token;
-
+    console.log('TOKKEEENNN',_token)
     if (_token) {
 
       spotify.setAccessToken(_token);
@@ -35,6 +69,7 @@ function App() {
           user: user,
         });
       });
+
 
       spotify.getUserPlaylists().then((playlists) => {
         dispatch({
@@ -55,7 +90,17 @@ function App() {
           type:"SET_TOP_ARTISTS",
           top_artists:response
         })
+
+      
       });
+      // spotify.getNewReleases().then((response) =>{
+      //   dispatch({
+      //     type:"SET_NEW_RELEASES",
+      //     new_releases:response
+      //   })
+      // })
+
+      
 
       dispatch({
         type:"SET_SPOTIFY",
@@ -66,14 +111,18 @@ function App() {
 
   }, [token,dispatch]);
 
+
   
   // return <div className="app">{token ? <Player spotify={spotify} /> : <Login />}</div>;
-
+  //console.log("APP KI PLAYLIST",playlists?.items?.[0])
+  // console.log('new____RELEASES___',new_releases)
   return (
-    <div className="app">
-      {!token && <Login />}
-      {token && <Player spotify={spotify} />}
-    </div>
+    <Router>
+      <div className="app">
+        {!token && <Login />}
+        {token && <Player spotify={spotify} />}
+      </div>
+    </Router>
   )
 }
 

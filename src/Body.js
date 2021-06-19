@@ -8,7 +8,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import SongRow from "./SongRow";
 
 function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useDataLayerValue();
+  const [{ discover_weekly,playlistChecked,currentPlaylist }, dispatch] = useDataLayerValue();
 
   const playPlaylist = (id) => {
       spotify
@@ -50,7 +50,8 @@ function Body({ spotify }) {
   }
 
   return (
-    <div className="body">
+    <div>
+    {!playlistChecked ?(<div className="body">
       <Header spotify={spotify} />
       <div className="body__info">
         <img src={discover_weekly?.images[0].url} alt="" />
@@ -69,9 +70,11 @@ function Body({ spotify }) {
         </div>
 
         {discover_weekly?.tracks.items.map((item) => (
-          <SongRow playSong={playSong} track={item.track} />
+          <SongRow playSong={playSong} track={item.track} key={item.track.id}/>
         ))}
       </div>
+    </div>) : (<h1>HI</h1>)}
+    
     </div>
   );
 }

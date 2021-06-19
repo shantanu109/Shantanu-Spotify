@@ -2,9 +2,14 @@ import React from "react";
 import "./Player.css";
 import Sidebar from "./Sidebar";
 import Body from "./Body";
-import Footer from './Footer'
+import Footer from './Footer';
+import Players from './Players';
+import { useDataLayerValue } from "./DataLayer";
+
 
 function Player({ spotify }) {
+const [{token}, dispatch] = useDataLayerValue();
+
   return (
     <div>
       <div className="player">
@@ -12,7 +17,8 @@ function Player({ spotify }) {
           <Sidebar />
           <Body spotify={spotify}/>
         </div>
-        <Footer spotify={spotify}/>
+        {/* <Footer spotify={spotify}/> */}
+        <Players token={token} />
       </div>
     </div>
   );

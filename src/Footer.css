@@ -64,3 +64,10 @@
     transform: scale(1.2) !important;
 }
 
+
+.player__footer{
+    position: fixed;
+    bottom:0;
+    height:50px;
+    width: 100%;
+}
