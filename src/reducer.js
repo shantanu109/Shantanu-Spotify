@@ -13,8 +13,9 @@ export const initialState = {
 token:null,
 isLoggedIn:false,
 playlistChecked:false,
-currentPlaylist:null
+currentPlaylist:null,
 //new_releases:[]
+displayPlaylist:null
 
 };
 
@@ -57,11 +58,18 @@ const reducer = (state, action) => {
             isLoggedIn:true
         };
 
+    case "SET_CURRENT_BODY_PLAYLIST":
+      return {
+        ...state,
+        displayPlaylist:action.displayPlaylist,
+      }
+
     case "SET_PLAYLIST":
       return {
         ...state,
         playlistChecked:action.playlistChecked,
-        currentPlaylist:action.currentPlaylist
+        currentPlaylist:action.currentPlaylist,
+        displayPlaylist:action.displayPlaylist
 
       }
     case "SET_HOME":
