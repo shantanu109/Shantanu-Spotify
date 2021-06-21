@@ -34,6 +34,11 @@
     margin-bottom: 10px;
 }
 
+.body__infoText2 > h2{
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
 .body__infoText > p{
     font-size: 14px;
 }
@@ -62,4 +67,18 @@
 .body__shuffle:hover{
     transition: 100ms transform ease-in;
     transform: scale(1.08);
+}
+
+.f6-display{
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-bottom: 70px;
+	box-sizing: border-box;
+	
+    margin-top:50px;
+    
+
+
 }

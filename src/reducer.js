@@ -15,7 +15,9 @@ isLoggedIn:false,
 playlistChecked:false,
 currentPlaylist:null,
 //new_releases:[]
-displayPlaylist:null
+displayPlaylist:null,
+bodyLibrary:false,
+new_releases:null
 
 };
 
@@ -44,6 +46,12 @@ const reducer = (state, action) => {
             isLoggedIn:true
         };
 
+    case "SET_NEW_RELEASES":
+      return {
+        ...state,
+        new_releases:action.new_releases
+      }
+
     case "SET_TOP_ARTISTS":
         return {
             ...state,
@@ -69,9 +77,17 @@ const reducer = (state, action) => {
         ...state,
         playlistChecked:action.playlistChecked,
         currentPlaylist:action.currentPlaylist,
-        displayPlaylist:action.displayPlaylist
+        displayPlaylist:action.displayPlaylist,
+        bodyLibrary:action.bodyLibrary
 
       }
+    
+    case "SET_BODY_LIBRARY":
+      return {
+        ...state,
+        bodyLibrary:action.bodyLibrary,
+      }
+
     case "SET_HOME":
       return {
         ...state,

@@ -6,8 +6,8 @@ import { useDataLayerValue } from "./DataLayer";
 
 
 
-function SidebarOption({ title, Icon,playlist }) {
-  const [{ playlists ,currentPlaylist,spotify,displayPlaylist}, dispatch] = useDataLayerValue();
+function SidebarOption({ title, Icon,playlist,check }) {
+  const [{ playlists ,currentPlaylist,spotify,displayPlaylist,bodyLibrary}, dispatch] = useDataLayerValue();
 
 const togglePlaylist = () => { 
   console.log('PLAYLIST',playlist)
@@ -16,7 +16,8 @@ const togglePlaylist = () => {
     type:"SET_PLAYLIST",
     playlistChecked:true,
     currentPlaylist:playlist,
-    displayPlaylist:null
+    displayPlaylist:null,
+    bodyLibrary:false
 
   })
 
@@ -41,8 +42,24 @@ const toggleHome = () => {
   dispatch({
     type:"SET_HOME",
     playlistChecked:false,
-    currentPlaylist:null
+    currentPlaylist:null,
   })
+
+  if (check){
+    dispatch({
+      type:"SET_BODY_LIBRARY",
+      bodyLibrary:true
+  
+    })
+  }
+  else{
+    dispatch({
+      type:"SET_BODY_LIBRARY",
+      bodyLibrary:false
+  
+    })
+
+  }
   
 }
 

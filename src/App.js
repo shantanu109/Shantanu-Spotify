@@ -43,7 +43,7 @@ const PrivateRoute = (privateRouteProps) => {
 function App() {
 
   //const [{ user,token }, dispatch] = useDataLayerValue();
-  const [{ token ,playlists,isLoggedIn}, dispatch] = useDataLayerValue();
+  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly}, dispatch] = useDataLayerValue();
   
 
   useEffect(() => {
@@ -100,6 +100,13 @@ function App() {
       //   })
       // })
 
+      spotify.getNewReleases().then((response) => {
+        dispatch({
+          type:"SET_NEW_RELEASES",
+          new_releases:response
+        })
+      })
+
       
 
       dispatch({
@@ -110,6 +117,10 @@ function App() {
     }
 
   }, [token,dispatch]);
+
+
+  console.log('NEWWWW RELEASESSSS',new_releases)
+  console.log("DISCOVERRR WEEKLY",discover_weekly)
 
 
   
