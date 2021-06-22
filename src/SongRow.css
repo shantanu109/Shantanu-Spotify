@@ -58,6 +58,7 @@
 	
 	margin: 0px;
 	margin-bottom: 30px;
+    
 	
 	
 }
@@ -68,6 +69,33 @@
 
 
 }
+
+.f6-song-img-2{
+
+	width: 242px;
+	overflow: hidden;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 242px;
+	text-align: center;
+	
+	margin: 0px;
+	margin-bottom: 30px;
+    /* border:1px solid red; */
+    
+    
+	
+	
+}
+.f6-song-img-2 img{
+	width: 80%;
+	height: 80%;
+
+
+
+}
+
 
 .songBox{
 

@@ -17,7 +17,8 @@ currentPlaylist:null,
 //new_releases:[]
 displayPlaylist:null,
 bodyLibrary:false,
-new_releases:null
+new_releases:null,
+recently_played:null,
 
 };
 
@@ -80,6 +81,12 @@ const reducer = (state, action) => {
         displayPlaylist:action.displayPlaylist,
         bodyLibrary:action.bodyLibrary
 
+      }
+    
+    case "SET_RECENTLY_PLAYED_TRACKS":
+      return {
+        ...state,
+        recently_played:action.recently_played
       }
     
     case "SET_BODY_LIBRARY":

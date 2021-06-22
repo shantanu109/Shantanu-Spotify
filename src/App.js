@@ -43,7 +43,7 @@ const PrivateRoute = (privateRouteProps) => {
 function App() {
 
   //const [{ user,token }, dispatch] = useDataLayerValue();
-  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly}, dispatch] = useDataLayerValue();
+  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly,recently_played}, dispatch] = useDataLayerValue();
   
 
   useEffect(() => {
@@ -107,6 +107,15 @@ function App() {
         })
       })
 
+      spotify.getMyRecentlyPlayedTracks().then((response) => {
+        dispatch({
+          type:"SET_RECENTLY_PLAYED_TRACKS",
+          recently_played:response
+        })
+      })
+
+      
+
       
 
       dispatch({
@@ -119,9 +128,7 @@ function App() {
   }, [token,dispatch]);
 
 
-  console.log('NEWWWW RELEASESSSS',new_releases)
-  console.log("DISCOVERRR WEEKLY",discover_weekly)
-
+  console.log('RECENTTTTLLLYYY PLLAYYEEED',recently_played)
 
   
   // return <div className="app">{token ? <Player spotify={spotify} /> : <Login />}</div>;

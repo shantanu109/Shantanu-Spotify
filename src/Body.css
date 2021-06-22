@@ -82,3 +82,17 @@
 
 
 }
+.f6-display-2{
+
+	display: flex;
+	flex-wrap: wrap;
+	/* justify-content: space-between; */
+	margin-bottom: 70px;
+	box-sizing: border-box;
+	
+    margin-top:50px;
+    border:1px solid red;
+    
+
+
+}

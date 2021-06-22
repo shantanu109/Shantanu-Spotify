@@ -6,10 +6,11 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import SongRow from "./SongRow";
-import SongBox from "./SongBox"
+import SongBox from "./SongBox";
+import Songbox1 from "./Songbox1";
 
 function Body({ spotify }) {
-  const [{ discover_weekly, playlistChecked, currentPlaylist,displayPlaylist ,bodyLibrary,new_releases}, dispatch] =
+  const [{ discover_weekly, playlistChecked, currentPlaylist,displayPlaylist ,bodyLibrary,new_releases,recently_played}, dispatch] =
     useDataLayerValue();
 
   const playPlaylist = (id) => {
@@ -93,11 +94,25 @@ function Body({ spotify }) {
       <div className="body__infoText2">
         <h2>Latest Releases</h2>
         <div className="f6-display">
-        {new_releases?.albums?.items.map((item) => (
+        {new_releases?.albums?.items.slice(0,15).map((item) => (
               <SongBox
                 playPlaylist={playPlaylist1}
                 album={item}
                 key={item.id}
+              />
+            ))}
+        </div>
+
+      </div>
+      <div className="body__infoText2">
+        <h2>Recently Played</h2>
+        <div className="f6-display">
+        {recently_played?.items.slice(0,4).map((item) => (
+              <Songbox1
+                playSong={playSong}
+                album={item.track.album}
+                key={item.track.id}
+                track={item.track}
               />
             ))}
         </div>
