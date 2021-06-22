@@ -37,6 +37,7 @@
 .body__infoText2 > h2{
     font-size: 45px;
     margin-bottom: 10px;
+    
 }
 
 .body__infoText > p{
@@ -89,9 +90,10 @@
 	/* justify-content: space-between; */
 	margin-bottom: 70px;
 	box-sizing: border-box;
+    
 	
     margin-top:50px;
-    border:1px solid red;
+    /* border:1px solid red; */
     
 
 

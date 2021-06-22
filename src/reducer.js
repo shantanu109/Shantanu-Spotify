@@ -19,6 +19,12 @@ displayPlaylist:null,
 bodyLibrary:false,
 new_releases:null,
 recently_played:null,
+top_tracks:null,
+party_playlist:null,
+bollywood_playlist:null,
+chill_playlist:null,
+indie_playlist:null,
+
 
 };
 
@@ -39,6 +45,12 @@ const reducer = (state, action) => {
             playing: action.playing,
             isLoggedIn:true
         };
+
+    case "SET_TOP_TRACKS":
+      return {
+        ...state,
+        top_tracks:action.top_tracks
+      }
 
     case "SET_ITEM":
         return {
@@ -72,6 +84,8 @@ const reducer = (state, action) => {
         ...state,
         displayPlaylist:action.displayPlaylist,
       }
+    
+    
 
     case "SET_PLAYLIST":
       return {
@@ -102,6 +116,30 @@ const reducer = (state, action) => {
         currentPlaylist:action.currentPlaylist
 
       }
+    
+    case "SET_PARTY_PLAYLIST":
+      return {
+        ...state,
+        party_playlist:action.party_playlist
+      }
+
+    case "SET_BOLLYWOOD_PLAYLIST":
+      return {
+        ...state,
+        bollywood_playlist:action.bollywood_playlist
+      }
+    case "SET_CHILL_PLAYLIST":
+      return {
+        ...state,
+        chill_playlist:action.chill_playlist
+      }
+    
+    case "SET_INDIE_PLAYLIST":
+      return {
+        ...state,
+        indie_playlist:action.indie_playlist
+      }
+  
 
 
     case "SET_TOKEN":

@@ -43,7 +43,7 @@ const PrivateRoute = (privateRouteProps) => {
 function App() {
 
   //const [{ user,token }, dispatch] = useDataLayerValue();
-  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly,recently_played}, dispatch] = useDataLayerValue();
+  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly,recently_played,top_tracks,top_artists,party_playlist,bollywood_playlist}, dispatch] = useDataLayerValue();
   
 
   useEffect(() => {
@@ -91,6 +91,39 @@ function App() {
           top_artists:response
         })
 
+      spotify.getCategoryPlaylists('party').then((response) => {
+        dispatch({
+          type:"SET_PARTY_PLAYLIST",
+          party_playlist:response
+        })
+      })
+
+      spotify.getCategoryPlaylists('bollywood').then((response) => {
+        dispatch({
+          type:"SET_BOLLYWOOD_PLAYLIST",
+          bollywood_playlist:response
+        })
+      })
+
+      spotify.getCategoryPlaylists('chill').then((response) => {
+        dispatch({
+          type:"SET_CHILL_PLAYLIST",
+          chill_playlist:response
+        })
+      })
+
+      spotify.getCategoryPlaylists('rock').then((response) => {
+        dispatch({
+          type:"SET_INDIE_PLAYLIST",
+          indie_playlist:response
+        })
+      })
+
+
+      
+
+      
+
       
       });
       // spotify.getNewReleases().then((response) =>{
@@ -114,10 +147,15 @@ function App() {
         })
       })
 
-      
+      spotify.getMyTopTracks().then((response) => {
+        dispatch({
+          type:"SET_TOP_TRACKS",
+          top_tracks:response
+        })
+      })
+
 
       
-
       dispatch({
         type:"SET_SPOTIFY",
         spotify:spotify
@@ -128,7 +166,7 @@ function App() {
   }, [token,dispatch]);
 
 
-  console.log('RECENTTTTLLLYYY PLLAYYEEED',recently_played)
+  console.log('BOLLLYWOOWOWOWOW PLALLAL',bollywood_playlist);
 
   
   // return <div className="app">{token ? <Player spotify={spotify} /> : <Login />}</div>;

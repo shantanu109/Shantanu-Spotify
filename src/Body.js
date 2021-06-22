@@ -8,9 +8,12 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import SongRow from "./SongRow";
 import SongBox from "./SongBox";
 import Songbox1 from "./Songbox1";
+import Songbox2 from "./Songbox2";
+import Songbox3 from "./Songbox3";
+import Songbox4 from "./Songbox4";
 
 function Body({ spotify }) {
-  const [{ discover_weekly, playlistChecked, currentPlaylist,displayPlaylist ,bodyLibrary,new_releases,recently_played}, dispatch] =
+  const [{ discover_weekly, playlistChecked, currentPlaylist,displayPlaylist,party_playlist,bodyLibrary,new_releases,recently_played,top_tracks,top_artists,bollywood_playlist,chill_playlist,indie_playlist}, dispatch] =
     useDataLayerValue();
 
   const playPlaylist = (id) => {
@@ -84,6 +87,26 @@ function Body({ spotify }) {
       });
   };
 
+  const playPlaylist3 = (id) => {
+    spotify
+      .play({
+        context_uri: `spotify:playlist:${id}`,
+      })
+      .then((res) => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: r.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
+
+
 
 
   return (
@@ -94,7 +117,7 @@ function Body({ spotify }) {
       <div className="body__infoText2">
         <h2>Latest Releases</h2>
         <div className="f6-display">
-        {new_releases?.albums?.items.slice(0,15).map((item) => (
+        {new_releases?.albums?.items.slice(0,12).map((item) => (
               <SongBox
                 playPlaylist={playPlaylist1}
                 album={item}
@@ -117,6 +140,97 @@ function Body({ spotify }) {
             ))}
         </div>
 
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>Top Tracks</h2>
+        <div className="f6-display">
+        {top_tracks?.items.slice(0,8).map((item) => (
+              <Songbox2
+                playSong={playSong}
+                album={item.album}
+                key={item.id}
+                id={item.id}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+
+      <div className="body__infoText2">
+        <h2>Top Artists</h2>
+        <div className="f6-display-2">
+        {top_artists?.items.map((item) => (
+              <Songbox3
+                artist={item}
+                key={item.id}
+                id={item.id}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>Party Time </h2>
+        <div className="f6-display">
+        {party_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>The Bollywood Experience </h2>
+        <div className="f6-display">
+        {bollywood_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>Chill</h2>
+        <div className="f6-display">
+        {chill_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>Rock</h2>
+        <div className="f6-display">
+        {indie_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
       </div>
       {/* </div> */}
 

@@ -27,7 +27,7 @@ function SongBox({album,playPlaylist}){
     
     return (
         <div>
-            <figure className="f6-song-img">
+            <figure className="f6-song-img-2">
 
             <img className="songbox__img" src={album.images[0].url} alt="" onClick={playPlaylist2}/>
             
