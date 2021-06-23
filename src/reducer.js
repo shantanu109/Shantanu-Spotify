@@ -24,6 +24,9 @@ party_playlist:null,
 bollywood_playlist:null,
 chill_playlist:null,
 indie_playlist:null,
+workout_playlist:null,
+english_playlist:null,
+country_playlist:null
 
 
 };
@@ -123,6 +126,18 @@ const reducer = (state, action) => {
         party_playlist:action.party_playlist
       }
 
+    case "SET_COUNTRY_PLAYLIST":
+      return {
+        ...state,
+        country_playlist:action.country_playlist
+      }
+
+    case "SET_ENGLISH_PLAYLIST":
+      return {
+        ...state,
+        english_playlist:action.english_playlist
+      }
+
     case "SET_BOLLYWOOD_PLAYLIST":
       return {
         ...state,
@@ -139,7 +154,13 @@ const reducer = (state, action) => {
         ...state,
         indie_playlist:action.indie_playlist
       }
-  
+
+    case "SET_WORKOUT_PLAYLIST":
+      return {
+        ...state,
+        workout_playlist:action.workout_playlist
+      }
+
 
 
     case "SET_TOKEN":

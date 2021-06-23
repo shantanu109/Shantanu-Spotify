@@ -13,7 +13,7 @@ import Songbox3 from "./Songbox3";
 import Songbox4 from "./Songbox4";
 
 function Body({ spotify }) {
-  const [{ discover_weekly, playlistChecked, currentPlaylist,displayPlaylist,party_playlist,bodyLibrary,new_releases,recently_played,top_tracks,top_artists,bollywood_playlist,chill_playlist,indie_playlist}, dispatch] =
+  const [{ discover_weekly, playlistChecked, country_playlist, currentPlaylist,displayPlaylist,party_playlist,bodyLibrary,new_releases,recently_played,top_tracks,top_artists,bollywood_playlist,chill_playlist,indie_playlist,workout_playlist,english_playlist}, dispatch] =
     useDataLayerValue();
 
   const playPlaylist = (id) => {
@@ -221,6 +221,53 @@ function Body({ spotify }) {
         <h2>Rock</h2>
         <div className="f6-display">
         {indie_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>Workout Beats</h2>
+        <div className="f6-display">
+        {workout_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+
+      <div className="body__infoText2">
+        <h2>Classical Tunes</h2>
+        <div className="f6-display">
+        {english_playlist?.playlists?.items.slice(0,8).map((item) => (
+              <Songbox4
+                album={item}
+                key={item.id}
+                id={item.id}
+                playPlaylist3={playPlaylist3}
+              />
+            ))}
+        </div>
+
+        
+      </div>
+
+      <div className="body__infoText2">
+        <h2>Country Music</h2>
+        <div className="f6-display">
+        {country_playlist?.playlists?.items.slice(0,8).map((item) => (
               <Songbox4
                 album={item}
                 key={item.id}

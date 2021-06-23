@@ -119,6 +119,29 @@ function App() {
         })
       })
 
+      spotify.getCategoryPlaylists('workout').then((response) => {
+        dispatch({
+          type:"SET_WORKOUT_PLAYLIST",
+          workout_playlist:response
+        })
+      })
+
+      spotify.getCategoryPlaylists('classical').then((response) => {
+        dispatch({
+          type:"SET_ENGLISH_PLAYLIST",
+          english_playlist:response
+        })
+      })
+
+      spotify.getCategoryPlaylists('country').then((response) => {
+        dispatch({
+          type:"SET_COUNTRY_PLAYLIST",
+          country_playlist:response
+        })
+      })
+
+
+
 
       
 
