@@ -53,6 +53,33 @@ function Header({ spotify }) {
 
   // },[search,token])
 
+  const handleSearch = (e) => {
+    const searchText = e.target.value;
+
+    let cancel = false;
+    if (searchText.length ===0) {
+      dispatch({
+        type:"SET_SEARCH",
+        search:false
+      })
+    }
+    spotify.searchTracks(searchText).then((response) => {
+      if (cancel) return
+
+      dispatch({
+        type:"SET_SEARCH_RESULTS",
+        searchResults:response,
+        search:true
+
+      })
+    })
+
+    return () => cancel = true
+
+
+
+  }
+
   return (
     <div className="header">
       <div className="header__left">
@@ -61,6 +88,7 @@ function Header({ spotify }) {
           <input
             placeholder="Search for Artists,Songs, or Podcasts"
             type="text"
+            onChange={handleSearch}
           />
         </div>
         {/* </form> */}

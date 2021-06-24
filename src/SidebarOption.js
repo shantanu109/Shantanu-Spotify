@@ -17,7 +17,9 @@ const togglePlaylist = () => {
     playlistChecked:true,
     currentPlaylist:playlist,
     displayPlaylist:null,
-    bodyLibrary:false
+    bodyLibrary:false,
+    search:false,
+    searchResults:null
 
   })
 
@@ -43,19 +45,25 @@ const toggleHome = () => {
     type:"SET_HOME",
     playlistChecked:false,
     currentPlaylist:null,
+    search:false,
+    searchResults:null
   })
 
   if (check){
     dispatch({
       type:"SET_BODY_LIBRARY",
-      bodyLibrary:true
+      bodyLibrary:true,
+      search:false,
+      searchResults:null
   
     })
   }
   else{
     dispatch({
       type:"SET_BODY_LIBRARY",
-      bodyLibrary:false
+      bodyLibrary:false,
+      search:false,
+      searchResults:null
   
     })
 

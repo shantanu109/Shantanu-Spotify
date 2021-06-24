@@ -11,10 +11,13 @@ import Songbox1 from "./Songbox1";
 import Songbox2 from "./Songbox2";
 import Songbox3 from "./Songbox3";
 import Songbox4 from "./Songbox4";
+import SongRow2 from "./SongRow2";
 
 function Body({ spotify }) {
-  const [{ discover_weekly, playlistChecked, country_playlist, currentPlaylist,displayPlaylist,party_playlist,bodyLibrary,new_releases,recently_played,top_tracks,top_artists,bollywood_playlist,chill_playlist,indie_playlist,workout_playlist,english_playlist}, dispatch] =
+  const [{ discover_weekly, playlistChecked, search,searchResults, country_playlist, currentPlaylist,displayPlaylist,party_playlist,bodyLibrary,new_releases,recently_played,top_tracks,top_artists,bollywood_playlist,chill_playlist,indie_playlist,workout_playlist,english_playlist}, dispatch] =
     useDataLayerValue();
+   
+  console.log('SEAEAEAECRRCH  RESSSULLLLTSSS',searchResults)
 
   const playPlaylist = (id) => {
     spotify
@@ -111,7 +114,37 @@ function Body({ spotify }) {
 
   return (
     <div>
-      {bodyLibrary ? (<div className="body">
+      {search? (<div className="body">
+      <Header spotify={spotify} />
+      <div className="body__info">
+        <img src={searchResults?.tracks?.items[0].album.images[0].url ? searchResults?.tracks?.items[0].album.images[0].url : "https://play-lh.googleusercontent.com/zim-eMjkFdDeXUKv1dLiFuWgsUvy1cIdAJbOJDY7pg1P27A0TdyWxRXv1v0AO4Vn9gg"} alt="" />
+        <div className="body__infoText">
+          {/* <strong>XYZ</strong> */}
+          <h2>Search Results</h2>
+          <p>{discover_weekly?.description}</p>
+        </div>
+      </div>
+
+      <div className="body__songs">
+        {/* <div className="body__icons">
+          <PlayCircleFilledIcon
+            className="body__shuffle"
+            onClick={playPlaylist1}
+          />
+          <FavoriteIcon fontSize="large" />
+          <MoreHorizIcon />
+        </div> */}
+
+        {searchResults?.tracks?.items.map((item) => (
+          <SongRow
+            playSong={playSong}
+            track={item}
+            key={item.id}
+          />
+        ))}
+      </div>
+    </div>)
+    : bodyLibrary ? (<div className="body">
       <Header spotify={spotify} />
       {/* <div className="body__info"> */}
       <div className="body__infoText2">
@@ -349,5 +382,7 @@ function Body({ spotify }) {
     </div>
   );
 }
+
+
 
 export default Body;

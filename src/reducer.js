@@ -26,7 +26,9 @@ chill_playlist:null,
 indie_playlist:null,
 workout_playlist:null,
 english_playlist:null,
-country_playlist:null
+country_playlist:null,
+search:false,
+searchResults:null
 
 
 };
@@ -54,6 +56,21 @@ const reducer = (state, action) => {
         ...state,
         top_tracks:action.top_tracks
       }
+
+    case "SET_SEARCH":
+      return {
+        ...state,
+        search:action.search
+      }
+
+    case "SET_SEARCH_RESULTS":
+      return {
+        ...state,
+        searchResults:action.searchResults,
+        search:action.search
+
+      }
+
 
     case "SET_ITEM":
         return {
@@ -96,7 +113,9 @@ const reducer = (state, action) => {
         playlistChecked:action.playlistChecked,
         currentPlaylist:action.currentPlaylist,
         displayPlaylist:action.displayPlaylist,
-        bodyLibrary:action.bodyLibrary
+        bodyLibrary:action.bodyLibrary,
+        search:action.search,
+        searchResults:action.searchResults
 
       }
     
@@ -110,13 +129,17 @@ const reducer = (state, action) => {
       return {
         ...state,
         bodyLibrary:action.bodyLibrary,
+        search:action.search,
+        searchResults:action.searchResults
       }
 
     case "SET_HOME":
       return {
         ...state,
         playlistChecked:action.playlistChecked,
-        currentPlaylist:action.currentPlaylist
+        currentPlaylist:action.currentPlaylist,
+        search:action.search,
+        searchResults:action.searchResults
 
       }
     
