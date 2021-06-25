@@ -16,7 +16,7 @@ export default function Players({ token, trackUri }) {
       }}
       play={play}
       uris={trackUri ? [trackUri] : []}
-      styles={{activeColor:'#fff',bgColor:'#282828',sliderColor:'green',color:'#ffffff',trackNameColor:'#ffffff',sliderHandleColor:'#ffffff',trackArtistColor:'#ccc'}}
+      styles={{activeColor:'#1DB954',bgColor:'#282828',sliderColor:'#1DB954',color:'#ffffff',trackNameColor:'#ffffff',sliderHandleColor:'#ffffff',trackArtistColor:'#ccc'}}
     />
     </div>
   );

@@ -74,6 +74,7 @@ function Header({ spotify }) {
       })
     })
 
+
     return () => cancel = true
 
 
@@ -89,6 +90,7 @@ function Header({ spotify }) {
             placeholder="Search for Artists,Songs, or Podcasts"
             type="text"
             onChange={handleSearch}
+            style={{outline:'none'}}
           />
         </div>
         {/* </form> */}

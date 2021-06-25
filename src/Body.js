@@ -121,11 +121,11 @@ function Body({ spotify }) {
         <div className="body__infoText">
           {/* <strong>XYZ</strong> */}
           <h2>Search Results</h2>
-          <p>{discover_weekly?.description}</p>
+          <p>Your weekly mixtape of fresh music. Enjoy new music and deep cuts picked for you. Updates every Monday.</p>
         </div>
       </div>
 
-      <div className="body__songs">
+      <div className="body__songs ">
         {/* <div className="body__icons">
           <PlayCircleFilledIcon
             className="body__shuffle"
@@ -134,14 +134,47 @@ function Body({ spotify }) {
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
         </div> */}
+        <h2>Songs</h2>
 
-        {searchResults?.tracks?.items.map((item) => (
+        {searchResults?.tracks?.items.slice(0,10).map((item) => (
           <SongRow
             playSong={playSong}
             track={item}
             key={item.id}
           />
+          
         ))}
+        
+
+        
+      </div>
+      <div className="body__infoText2">
+        <h2>Albums </h2>
+        <div className="f6-display">
+        {searchResults?.tracks?.items.slice(0,8).map((item) => (
+          <SongBox    
+            album={item.album}
+            key={item.id}
+          />
+          
+        ))}
+      </div>
+
+      
+      {/* <div className="body__infoText2">
+        <h2>Artists</h2>
+        <div className="f6-display-2">
+        {searchResults?.tracks?.items.slice(0,4).map((item) => (
+              <Songbox3
+                artist={item.artists}
+                key={item.id}
+                
+              />
+            ))}
+        </div>
+
+        
+      </div> */}
       </div>
     </div>)
     : bodyLibrary ? (<div className="body">
