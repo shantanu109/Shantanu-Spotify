@@ -28,7 +28,8 @@ workout_playlist:null,
 english_playlist:null,
 country_playlist:null,
 search:false,
-searchResults:null
+searchResults:null,
+//artist_tracks:null,
 
 
 };
@@ -62,6 +63,12 @@ const reducer = (state, action) => {
         ...state,
         search:action.search
       }
+
+    // case "SET_ARTIST_TRACKS":
+    //   return {
+    //     ...state,
+    //     artist_tracks:action.artist_tracks
+    //   }
 
     case "SET_SEARCH_RESULTS":
       return {

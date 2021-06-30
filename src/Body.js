@@ -18,7 +18,7 @@ function Body({ spotify }) {
     useDataLayerValue();
    
   console.log('SEAEAEAECRRCH  RESSSULLLLTSSS',searchResults)
-
+  
   const playPlaylist = (id) => {
     spotify
       .play({
@@ -107,7 +107,7 @@ function Body({ spotify }) {
           });
         });
       });
-  };
+  }; 
 
 
 
@@ -227,7 +227,7 @@ function Body({ spotify }) {
       <div className="body__infoText2">
         <h2>Top Artists</h2>
         <div className="f6-display-2">
-        {top_artists?.items.map((item) => (
+        {top_artists?.items.slice(0,4).map((item) => (
               <Songbox3
                 artist={item}
                 key={item.id}

@@ -43,10 +43,11 @@ const PrivateRoute = (privateRouteProps) => {
 function App() {
 
   //const [{ user,token }, dispatch] = useDataLayerValue();
-  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly,recently_played,top_tracks,top_artists,party_playlist,bollywood_playlist}, dispatch] = useDataLayerValue();
+  const [{ token ,playlists,isLoggedIn,new_releases,discover_weekly,recently_played,top_tracks,top_artists,party_playlist,bollywood_playlist,artist_tracks}, dispatch] = useDataLayerValue();
   
-
+  
   useEffect(() => {
+    
     const hash = getTokenFromUrl();
     //window.location.hash = "";
     
@@ -56,6 +57,7 @@ function App() {
     console.log('TOKKEEENNN',_token)
     if (_token) {
 
+      
       spotify.setAccessToken(_token);
 
       dispatch({
@@ -71,7 +73,6 @@ function App() {
       });
 
 
-
       spotify.getUserPlaylists().then((playlists) => {
         dispatch({
           type:"SET_PLAYLISTS",
@@ -85,6 +86,8 @@ function App() {
           discover_weekly:response,
         })
       })
+
+      
 
       spotify.getMyTopArtists().then((response) =>{
         dispatch({
@@ -119,6 +122,8 @@ function App() {
           indie_playlist:response
         })
       })
+
+      
 
       spotify.getCategoryPlaylists('workout').then((response) => {
         dispatch({
@@ -180,7 +185,8 @@ function App() {
         })
       })
 
-
+      
+      
       
       dispatch({
         type:"SET_SPOTIFY",
@@ -191,8 +197,11 @@ function App() {
 
   }, [token,dispatch]);
 
+  
 
   console.log('BOLLLYWOOWOWOWOW PLALLAL',bollywood_playlist);
+  console.log('ARTTTISSISITT TOPPP TRACCKS',artist_tracks);
+  console.log('ARTISSSSS',top_artists);
 
   
   // return <div className="app">{token ? <Player spotify={spotify} /> : <Login />}</div>;
@@ -201,6 +210,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        
         {!token && <Login />}
         {token && <Player spotify={spotify} />}
       </div>

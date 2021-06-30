@@ -5,6 +5,16 @@ import { useDataLayerValue } from "./DataLayer";
 function Songbox3({artist,id}){
     const [{ spotify}, dispatch] = useDataLayerValue();
 
+    // const getArtist = (id) => {
+
+    //     spotify.getArtistAlbums(`${id}`).then((response) => {
+    //         dispatch({
+    //             type:"SET_ARTIST_TRACKS",
+    //             artist_tracks:response
+    //         })
+    //     })
+    // }
+
     
     return (
         <div>
@@ -24,6 +34,8 @@ function Songbox3({artist,id}){
 
          </div>
     )
+
+   
 }
 
 export default Songbox3;
