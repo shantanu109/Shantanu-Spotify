@@ -121,7 +121,7 @@ function Body({ spotify }) {
         <div className="body__infoText">
           {/* <strong>XYZ</strong> */}
           <h2>Search Results</h2>
-          <p>Your weekly mixtape of fresh music. Enjoy new music and deep cuts picked for you. Updates every Monday.</p>
+          <p>Your favorite songs and albums. Enjoy new music and deep cuts picked for you. Updates every Monday.</p>
         </div>
       </div>
 
