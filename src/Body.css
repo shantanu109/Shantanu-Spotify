@@ -5,7 +5,7 @@
     color:white;
     background: linear-gradient(rgb(91,87,115),rgba(0,0,0,1));
     overflow-y: overlay;
-    width: 100%;
+    width: 95%;
     
 }
 
@@ -33,7 +33,7 @@
 }
 
 .body__infoText > h2{
-    font-size: 65px;
+    font-size: 85px;
     margin-bottom: 10px;
 }
 
