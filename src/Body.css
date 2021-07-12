@@ -5,7 +5,8 @@
     color:white;
     background: linear-gradient(rgb(91,87,115),rgba(0,0,0,1));
     overflow-y: overlay;
-    width: 100%;
+    width: 95%;
+    border:1px solid red;
     
 }
 
