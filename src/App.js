@@ -209,10 +209,12 @@ function App() {
   // console.log('new____RELEASES___',new_releases)
   return (
     <Router>
+      <div className="wrapper">
       <div className="app">
         
         {!token && <Login />}
         {token && <Player spotify={spotify} />}
+      </div>
       </div>
     </Router>
   )
