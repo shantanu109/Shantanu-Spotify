@@ -5,7 +5,7 @@
     color:white;
     background: linear-gradient(rgb(91,87,115),rgba(0,0,0,1));
     overflow-y: overlay;
-    width: 95%;
+    width: 1200px;
     border:1px solid red;
     
 }
@@ -20,7 +20,7 @@
     display: flex;
     align-items: flex-end;
     padding:10px;
-    border:1px solid cyan;
+    
 
 }
 
