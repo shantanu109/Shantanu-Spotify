@@ -21,13 +21,13 @@ useEffect(() => {
   return (
     <div>
       <div className="player">
-        <div className="player_body">
+        {/* <div className="player_body"> */}
           <Sidebar />
           <Body spotify={spotify}/>
         </div>
         {/* <Footer spotify={spotify}/> */}
         <Players token={token} />
-      </div>
+      {/* </div> */}
     </div>
   );
 }
