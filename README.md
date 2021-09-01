@@ -1,3 +1,20 @@
+# Steps to run Spotify Web Player
+
+1) Login with Spotify account.
+
+<img width="1279" alt="Screenshot 2021-08-31 at 8 02 18 PM" src="https://user-images.githubusercontent.com/42075794/131591043-bbfa980c-daaf-4311-9d8f-bc0d3f6aba46.png">
+
+2) Click on the bottom right icon. Then select 'Spotify Web Player'.
+
+<img width="1276" alt="Screenshot 2021-08-31 at 8 03 24 PM" src="https://user-images.githubusercontent.com/42075794/131591155-f414ddfc-291b-4142-8eb7-3fb07bd54545.png">
+
+3) Play your favorite songs,albums,playlists.
+
+<img width="1280" alt="Screenshot 2021-08-31 at 8 06 03 PM" src="https://user-images.githubusercontent.com/42075794/131591356-a2780201-96d1-47a9-8d5f-fbc922f8bf73.png">
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
